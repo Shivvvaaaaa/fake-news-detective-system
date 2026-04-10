@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fake News Detector</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #667eea, #764ba2);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .container {
+        background: rgba(207, 18, 18, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        width: 400px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 14px;
+        color: #ddd;
+    }
+
+    textarea {
+        width: 100%;
+        height: 120px;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        resize: none;
+        font-size: 14px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background: #ff6b6b;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #ff4757;
+    }
+
+    .result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🕵️ Fake News Detector</h1>
+    <p>Enter a news headline or article to check if it's real or fake</p>
+
+    <textarea id="newsInput" placeholder="Type news here..."></textarea>
+
+    <button onclick="checkNews()">Check News</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function checkNews() {
+    let text = document.getElementById("newsInput").value;
+
+    if (text === "") {
+        alert("Please enter some news!");
+        return;
+    }
+
+    // Dummy logic (for now)
+    let fakeWords = ["shocking", "viral", "100% cure", "click here"];
+
+    let isFake = fakeWords.some(word => text.toLowerCase().includes(word));
+
+    let result = document.getElementById("result");
+
+    if (isFake) {
+        result.innerHTML = "❌ This looks like FAKE news!";
+        result.style.color = "red";
+    } else {
+        result.innerHTML = "✅ This seems REAL!";
+        result.style.color = "lightgreen";
+    }
+}
+</script>
+
+</body>
+</html>
